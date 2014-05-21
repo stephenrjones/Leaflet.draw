@@ -1,7 +1,7 @@
-L.Draw.Marker = L.Draw.Feature.extend({
+L.Draw.Markers = L.Draw.Feature.extend({
 	statics: {
 		TYPE: 'marker',
-        ID: ''
+        CLASS: 'marker'
 	},
 
 	options: {
@@ -11,9 +11,11 @@ L.Draw.Marker = L.Draw.Feature.extend({
 		zIndexOffset: 2000 // This should be > than the highest z-index any markers
 	},
 
-	initialize: function (map, options) {
+	initialize: function (map, options, n) {
 		// Save the type so super can fire, need to do this as cannot do this.TYPE :(
-		this.type = L.Draw.Marker.TYPE;
+		this.type = L.Draw.Markers.TYPE + "-" + n;
+        this.clasz = L.Draw.Markers.CLASS;
+        L.setOptions(this,options);
 		L.Draw.Feature.prototype.initialize.call(this, map, options);
 	},
 
