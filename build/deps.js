@@ -10,6 +10,7 @@ var deps = {
 		src: [
 			'draw/handler/Draw.Feature.js',
 			'draw/handler/Draw.Polyline.js',
+            'draw/handler/Draw.Polylines.js',
 			'draw/handler/Draw.Polygon.js',
             'draw/handler/Draw.Polygons.js',
 			'draw/handler/Draw.SimpleShape.js',

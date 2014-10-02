@@ -35,23 +35,25 @@ L.DrawToolbar = L.Toolbar.extend({
 
 
 		if (this.options.polyline) {
-			this._initModeHandler(
-				new L.Draw.Polyline(map, this.options.polyline),
-				this._toolbarContainer,
-				buttonIndex++,
-				buttonClassPrefix,
-				L.drawLocal.draw.toolbar.buttons.polyline
-			);
+            if (this.options.polylines) {
+                for (var j = 0; j < this.options.polylines.length; j++) {
+                    var opns = L.extend({}, this.options.polyline, this.options.polylines[j]);
+                    var polys = new L.Draw.Polylines(map, opns, opns.id);
+
+                    this._initModeHandler(
+                        polys,
+                        this._toolbarContainer,
+                        buttonIndex++,
+                        buttonClassPrefix,
+                        //L.drawLocal.draw.toolbar.buttons.polyline
+                        this.options.polylines[j].title
+                    );
+                }
+            }
+
 		}
 
 		if (this.options.polygon) {
-//			this._initModeHandler(
-//				new L.Draw.Polygon(map, this.options.polygon),
-//				this._toolbarContainer,
-//				buttonIndex++,
-//				buttonClassPrefix,
-//				L.drawLocal.draw.toolbar.buttons.polygon
-//			);
 
             if (this.options.polygons) {
                 for (var k = 0; k < this.options.polygons.length; k++) {
