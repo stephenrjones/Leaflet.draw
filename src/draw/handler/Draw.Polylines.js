@@ -42,7 +42,7 @@ L.Draw.Polylines = L.Draw.Feature.extend({
 
 		// Save the type so super can fire, need to do this as cannot do this.TYPE :(
 		this.type = L.Draw.Polylines.TYPE + "-" + n;
-        this.clasz = L.Draw.Markers.CLASS;
+        this.clasz = L.Draw.Polylines.CLASS;
 
 		L.Draw.Feature.prototype.initialize.call(this, map, options);
 	},
