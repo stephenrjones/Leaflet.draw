@@ -23,6 +23,10 @@ L.DrawToolbar = L.Toolbar.extend({
             this.options.markers = options.markers;
         }
 
+        if (options.geomarkers) {
+            this.options.geomarkers = options.geomarkers;
+        }
+
 		L.Toolbar.prototype.initialize.call(this, options);
 	},
 
@@ -109,6 +113,20 @@ L.DrawToolbar = L.Toolbar.extend({
                 }
             }
 		}
+
+        if (this.options.geomarkers) {
+            for (var n = 0; n < this.options.geomarkers.length; n++) {
+                var gopts = L.extend({}, this.options.marker, this.options.geomarkers[n]);
+                var gmarker = new L.Draw.GeoMarkers(map, gopts, gopts.id);
+                this._initModeHandler(
+                    gmarker,
+                    this._toolbarContainer,
+                    buttonIndex++,
+                    buttonClassPrefix,
+                    this.options.geomarkers[n].icon.options.text
+                );
+            }
+        }
 
 		// Save button index of the last button, -1 as we would have ++ after the last button
 		this._lastButtonIndex = --buttonIndex;

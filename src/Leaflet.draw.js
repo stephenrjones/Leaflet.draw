@@ -16,7 +16,8 @@ L.drawLocal = {
 				polygon: 'Draw a polygon',
 				rectangle: 'Draw a rectangle',
 				circle: 'Draw a circle',
-				marker: 'Draw a marker'
+				marker: 'Draw a marker',
+                geomarkers: 'Drop a marker at current location'
 			}
 		},
 		handlers: {
@@ -30,6 +31,11 @@ L.drawLocal = {
 					start: 'Click map to place marker.'
 				}
 			},
+            geomarkers: {
+                tooltip: {
+                    start: 'Drop a marker point'
+                }
+            },
 			polygon: {
 				tooltip: {
 					start: 'Click to start drawing shape.',
